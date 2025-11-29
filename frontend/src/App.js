@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 function App() {
   const [msg, setMsg] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:5000/")
-      .then((res) => res.text())
-      .then((data) => setMsg(data));
-  }, []);
+useEffect(() => {
+  fetch(`${process.env.REACT_APP_API_URL}/`)
+    .then((res) => res.text())
+    .then((data) => setMsg(data))
+    .catch(err => console.log(err));
+}, []);
+
 
   return (
     <div>
